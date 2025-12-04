@@ -1,4 +1,4 @@
-# ⚡ Instant Installation Commands
+# ⚡ Instant Commands
 
 ### **For Linux (Bash)**
 ```bash
