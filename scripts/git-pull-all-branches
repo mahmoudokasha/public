@@ -1,0 +1,14 @@
+#!/bin/bash
+# Update current branch first
+git pull
+
+# Update all other local branches
+for branch in $(git branch | cut -c 3-); do
+  if [ "$branch" != "*" ]; then
+    echo "Updating $branch..."
+    git checkout "$branch" && git pull origin "$branch"
+  fi
+done
+
+# Return to original branch (optional)
+git checkout -  # switches back to previous branch
