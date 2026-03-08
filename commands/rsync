@@ -1,0 +1,1 @@
+rsync -rtv --delete --modify-window=1 --no-perms --no-owner --no-group --copy-links /path/to/source/ /path/to/backup/
