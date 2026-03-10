@@ -1,1 +1,7 @@
-rsync -rtv --delete --modify-window=1 --no-perms --no-owner --no-group --copy-links /path/to/source/ /path/to/backup/
+rsync -rtv --delete --modify-window=1 --no-perms --no-owner --no-group --copy-links \
+  --exclude='._*' \
+  --exclude='.DS_Store' \
+  --exclude='.Spotlight-V100' \
+  --exclude='.Trashes' \
+  --exclude='.fseventsd' \
+  /path/to/source/ /path/to/backup/
