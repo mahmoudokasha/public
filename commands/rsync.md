@@ -1,0 +1,14 @@
+### **Options Explained**
+-r – Recursive, copy directories recursively.\
+-t – Preserve modification times (supported on exFAT).\
+-v – Verbose, show progress (optional, can be omitted for quiet operation).\
+--delete – Delete files on the destination that are not present in the source, ensuring an exact mirror.\
+--modify-window=1 – Compensate for timestamp differences due to filesystem limitations (exFAT often has 2‑second granularity; this treats times within 1 second as equal).\
+--no-perms – Do not try to preserve permissions (exFAT doesn’t support them).\
+--no-owner – Do not try to preserve ownership (exFAT ignores it).\
+--no-group – Do not try to preserve group (exFAT ignores it).\
+--copy-links – Transform symlinks into the files/directories they point to. If you prefer to skip symlinks. entirely, replace with --links (copy symlinks as symlinks, but exFAT may not support them) or simply omit this option. Using --copy-links is safer for exFAT.
+
+### **Important** 
+The trailing slash on the source path (/path/to/source/) means “copy the contents of this directory”. 
+Without it, rsync would copy the source directory into the backup destination, creating /path/to/backup/source.
