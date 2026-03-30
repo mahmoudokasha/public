@@ -1,0 +1,12 @@
+# Run this command in Terminal to remove the initial delay while keeping the normal slide‑in animation:
+
+defaults write com.apple.dock autohide-delay -float 0 && defaults write com.apple.dock autohide-time-modifier -float 1.0 && killall Dock
+
+- autohide-delay -float 0 – eliminates the waiting time before the Dock starts to appear.
+- autohide-time-modifier -float 1.0 – explicitly sets the animation speed to the default value (normal slide).
+
+# To Revert to the Original Apple Settings:
+
+defaults delete com.apple.dock autohide-delay
+defaults delete com.apple.dock autohide-time-modifier
+killall Dock
