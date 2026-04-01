@@ -1,0 +1,1 @@
+repeat 3 {curl --interface en1 ifconfig.me; echo; sleep 1;}
