@@ -1,16 +1,10 @@
-# ⚡ Instant Commands
-
-### **For Linux (Bash)**
-```bash
-curl -s <raw-url> | bash
-```
-
-### **Bash Alias (.bashrc/.zshrc)**
+### **Bash alias (.bashrc/.zshrc)**
 ```
 alias <name>='<command>'
 ```
 
-### **For Windows (PowerShell)**
+### **Run a curl with bash**
+```bash
+curl -s <raw-url> | bash
 ```
-irm <raw-url> | iex
-```
+
