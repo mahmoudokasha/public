@@ -5,7 +5,7 @@
 curl -s <raw-url> | bash
 ```
 
-### **Bash Alias (.bashrc)**
+### **Bash Alias (.bashrc/.zshrc)**
 ```
 alias <name>='<command>'
 ```
