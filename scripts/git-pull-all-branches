@@ -1,18 +1,18 @@
 #!/bin/bash
 
-# Fetch all remotes and prune deleted branches
+# Fetch all remotes
 git fetch --all --prune
 
 # Save current branch
 current_branch=$(git branch --show-current)
 
-# Create/update local tracking branches for all remote branches
-for remote in $(git branch -r | grep -v '\->'); do
-    branch=${remote#origin/}
+# Create local branches for all remote branches
+git branch -r | grep -v '\->' | while read remote; do
+    branch=$(basename "$remote")
 
     # Skip if branch already exists locally
-    if ! git show-ref --verify --quiet refs/heads/$branch; then
-        echo "Creating local branch: $branch"
+    if ! git show-ref --verify --quiet "refs/heads/$branch"; then
+        echo "Creating branch $branch from $remote"
         git branch --track "$branch" "$remote"
     fi
 done
@@ -20,7 +20,8 @@ done
 # Update all local branches
 for branch in $(git for-each-ref --format='%(refname:short)' refs/heads/); do
     echo "Updating $branch..."
-    git checkout "$branch" && git pull
+    git checkout "$branch" || continue
+    git pull
 done
 
 # Return to original branch
