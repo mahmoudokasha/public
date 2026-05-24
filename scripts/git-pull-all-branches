@@ -1,14 +1,27 @@
 #!/bin/bash
-# Update current branch first
-git pull
 
-# Update all other local branches
-for branch in $(git branch | cut -c 3-); do
-  if [ "$branch" != "*" ]; then
-    echo "Updating $branch..."
-    git checkout "$branch" && git pull origin "$branch"
-  fi
+# Fetch all remotes and prune deleted branches
+git fetch --all --prune
+
+# Save current branch
+current_branch=$(git branch --show-current)
+
+# Create/update local tracking branches for all remote branches
+for remote in $(git branch -r | grep -v '\->'); do
+    branch=${remote#origin/}
+
+    # Skip if branch already exists locally
+    if ! git show-ref --verify --quiet refs/heads/$branch; then
+        echo "Creating local branch: $branch"
+        git branch --track "$branch" "$remote"
+    fi
 done
 
-# Return to original branch (optional)
-git checkout -  # switches back to previous branch
+# Update all local branches
+for branch in $(git for-each-ref --format='%(refname:short)' refs/heads/); do
+    echo "Updating $branch..."
+    git checkout "$branch" && git pull
+done
+
+# Return to original branch
+git checkout "$current_branch"
