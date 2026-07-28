@@ -1,15 +1,10 @@
 #!/bin/bash
+set -euo pipefail
 
-run_with_break() {
-  echo "--------------------------------"
-  echo "$@"
-  echo "--------------------------------"
-  "$@"
-}
+run() { echo "--- $* ---"; "$@"; }
 
-run_with_break sudo apt update
-run_with_break sudo apt upgrade -y
-run_with_break sudo apt autoremove -y
-run_with_break sudo apt autoclean
-run_with_break sudo apt clean
-run_with_break sudo snap refresh
+run sudo apt update
+run sudo apt upgrade -y
+run sudo apt autoremove -y
+run sudo apt autoclean
+run sudo snap refresh
