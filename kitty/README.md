@@ -1,4 +1,4 @@
-[https://github.com/orangci/walls-catppuccin-mocha/tree/master](https://orangc.net/wallsppuccin)
+https://orangc.net/wallsppuccin
 
 brew install font-jetbrains-mono
 
