@@ -1,0 +1,17 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "plugin": ["superpowers@git+https://github.com/obra/superpowers.git"],
+  "default_agent": "plan",
+  "small_model": "opencode/big-pickle",
+  "agent": {
+    "plan": { "color": "#FFD700" },
+    "build": { "color": "#FF5733" }
+  },
+  "permission": {
+    "read": "allow",
+    "bash": {
+      "git commit*": "ask",
+      "git push*": "ask"
+    }
+  }
+}
