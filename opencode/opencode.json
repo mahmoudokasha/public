@@ -2,7 +2,15 @@
   "$schema": "https://opencode.ai/config.json",
   "plugin": ["superpowers@git+https://github.com/obra/superpowers.git"],
   "default_agent": "plan",
-  "small_model": "opencode/big-pickle",
+  "model": "opencode/big-pickle",
+  "small_model": "openrouter/openrouter/free",
+  "provider": {
+    "openrouter": {
+      "models": {
+        "openrouter/free": {}
+      }
+    }
+  },
   "agent": {
     "plan": { "color": "#FFD700" },
     "build": { "color": "#FF5733" }
@@ -11,7 +19,10 @@
     "read": "allow",
     "bash": {
       "git commit*": "ask",
-      "git push*": "ask"
+      "git push*": "ask",
+      "pip*": "ask",
+      "npm*": "ask",
+      "brew*": "ask"
     }
   }
 }
