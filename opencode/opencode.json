@@ -3,26 +3,15 @@
   "plugin": ["superpowers@git+https://github.com/obra/superpowers.git"],
   "default_agent": "plan",
   "model": "opencode/big-pickle",
-  "small_model": "openrouter/openrouter/free",
-  "provider": {
-    "openrouter": {
-      "models": {
-        "openrouter/free": {}
-      }
-    }
-  },
+  "small_model": "opencode/big-pickle",
   "agent": {
     "plan": { "color": "#FFD700" },
     "build": { "color": "#FF5733" }
   },
-  "permission": {
-    "read": "allow",
-    "bash": {
-      "git commit*": "ask",
-      "git push*": "ask",
-      "pip*": "ask",
-      "npm*": "ask",
-      "brew*": "ask"
-    }
-  }
+  "permissions": [
+    { "action": "shell", "resource": "git commit *", "effect": "ask" },
+    { "action": "shell", "resource": "git push *", "effect": "ask" },
+    { "action": "shell", "resource": "git -C * commit *", "effect": "ask" },
+    { "action": "shell", "resource": "git -C * push *", "effect": "ask" }
+  ]
 }
